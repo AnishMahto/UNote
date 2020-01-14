@@ -188,7 +188,7 @@ class MyAccount extends Component {
                         <Paper style={{marginBottom:10, background: gradientTheme2}}>
                             <List>
                                 <ListItem>
-                                    <ListItemText style={{color:"white"}}>MY SUPPLEMENTARY APPLICATIONS</ListItemText>
+                                    <ListItemText style={{color:"white"}}>MY NOTES</ListItemText>
                                 </ListItem>
                             </List>
                         </Paper>

@@ -25,8 +25,8 @@ class Home extends Component {
             <Header />
             <Paper square>
                 <Tabs value={this.props.tab} variant='fullWidth' onChange={this.handleTabChange} indicatorColor='primary' textColor='primary' variant="scrollable" scrollButtons="auto">
-                    <Tab label="SUPPLEMENTARY APPLICATIONS" value="SUMMATIVES"/>
-                    <Tab label="RESOURCES" value="RESOURCES"/>
+                    <Tab label="PROGRAM NOTES" value="NOTES"/>
+                    <Tab label="PROGRAM RESOURCES" value="RESOURCES"/>
                 </Tabs>
             </Paper>
             <HomePageBody type={this.props.tab} />

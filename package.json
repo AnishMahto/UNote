@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack --mode development ./apps/frontend/src/index.js --output ./apps/frontend/static/frontend/main.js",
-    "build": "webpack --mode production ./share_summative/frontend/src/index.js --output ./share_summative/frontend/static/frontend/main.js"
+    "build": "webpack --mode production ./apps/frontend/src/index.js --output ./apps/frontend/static/frontend/main.js"
   },
   "keywords": [],
   "author": "",

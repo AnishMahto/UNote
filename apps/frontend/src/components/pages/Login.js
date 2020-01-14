@@ -66,8 +66,9 @@ class LoginForm extends Component {
 
         return (
             <Paper id="login_form" style={{flex:6, maxWidth:500, backgroundColor:"white", display:"flex", justifyContent:"center", alignItems:"center", flexDirection:"column", borderRadius:7}}>
-                {/* <Typography variant='h2' style={{fontSize:45, marginBottom:30}}>Login</Typography> */}
-                <div style={{width:100, height:100, background:gradientTheme, marginBottom:20, borderRadius:7}}></div>
+                <div style={{width:100, height:100, background:gradientTheme, marginBottom:20, borderRadius:7, display:"flex", justifyContent:"center", alignItems:"center"}}>
+                    <Typography variant='overline' style={{color:"white", fontSize:17}}><strong>U</strong>Note</Typography>
+                </div>
                 <TextField 
                     name="username" 
                     onChange={(event) => this.handleAuthInput("username", event)} 

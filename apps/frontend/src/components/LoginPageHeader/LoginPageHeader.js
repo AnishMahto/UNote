@@ -8,13 +8,12 @@ export default class LoginPageHeader extends Component {
         return (
             <AppBar position="static" style={{background:gradientTheme}}>
                 <Toolbar variant="dense" style={{display:"flex", flexDirection:"row", justifyContent:"space-between"}}>
-                    {/* <Typography variant="button">App Name</Typography> */}
                     <div>
-                        <Typography variant="button" style={{fontWeight:"bold"}}>App Name</Typography>
+                        <Typography variant="button" style={{fontWeight:"bold"}}>UNote</Typography>
                     </div>
                     
                     <div>
-                        <Button color="inherit">About</Button>
+                        {/* <Button color="inherit">About</Button> */}
                         <Link to="/login" style={{textDecoration:"none", color:"white"}}><Button color="inherit">Login</Button></Link>
                         <Link to="/create_account" style={{textDecoration:"none", color:"white"}}><Button color="inherit">Register</Button></Link>
                     </div>

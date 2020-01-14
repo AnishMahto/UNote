@@ -152,6 +152,12 @@ class ResourcesTab extends Component {
                 resourceItems: [],
             };
         }
+        if (this.state.data[Object.keys(this.state.data)[index]] === undefined) {
+            return {
+                "resourceLabel": "No Data Available",
+                resourceItems:[],
+            }
+        }
         return this.state.data[Object.keys(this.state.data)[index]];
     }
     

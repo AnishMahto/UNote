@@ -104,7 +104,7 @@ class SupplementaryApplicationsTab extends Component {
         } else if (this.state.data.length == 0) {
             return (
                 <div style={{marginTop:100}}>
-                    <Typography variant='overline' display='block' style={{color:"#747d8c", textAlign:"center"}} gutterBottom>No entries found for <strong>supplementary applications</strong>. Be the first to add one!</Typography>
+                    <Typography variant='overline' display='block' style={{color:"#747d8c", textAlign:"center"}} gutterBottom>No entries found for <strong>NOTES</strong>. Be the first to add one!</Typography>
                     <ErrorHandler/>
                 </div>
             );

@@ -14,7 +14,7 @@ const initialState = {
         open:false,
     },
     home: {
-        tab: "SUMMATIVES",
+        tab: "NOTES",
         expandedCard:null,
     },
     organization: null,

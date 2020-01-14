@@ -85,7 +85,9 @@ class CreateAccountForm extends Component {
 
         return (
             <Paper style={{flex:6, minHeight:550, maxWidth:500, backgroundColor:"white", display:"flex", justifyContent:"center", alignItems:"center", flexDirection:"column",  borderRadius:7}}>
-                <div style={{width:100, height:100, background:gradientTheme, marginBottom:20, borderRadius:7}}></div>
+                <div style={{width:100, height:100, background:gradientTheme, marginBottom:20, borderRadius:7, display:"flex", justifyContent:"center", alignItems:"center"}}>
+                    <Typography variant='overline' style={{color:"white", fontSize:17}}><strong>U</strong>Note</Typography>
+                </div>
                 <TextField 
                     variant='outlined' 
                     placeholder='Email' 
