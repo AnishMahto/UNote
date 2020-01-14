@@ -1,21 +1,34 @@
 import React, { Component } from 'react';
-import { List, ButtonBase, ListItem, ListItemText } from '@material-ui/core';
+import { List, ListItem, ListItemText } from '@material-ui/core';
 import store from '../../store';
+import { connect } from 'react-redux';
+import fetchErrorChecker from '../ErrorHandler/fetchErrorChecker';
+import getOrganizations from './getOrganizations';
 
-export default class OrganizationSelectorList extends Component {
+class OrganizationSelectorList extends Component {
 
     state = {
-        data: [
-            {name: "Turner Fenton Secondary School", value: "TURNER_FENTON_SECONDARY_SCHOOL"},
-            {name: "St. Francis Xavier", value: "ST_FRANCIS_XAVIER_SECONDARY_SCHOOL"},
-        ]
+        data: []
+    }
+
+    componentDidMount() {
+        getOrganizations((data) => {
+            this.setState({
+                "data":data,
+            })
+        })
+    }
+
+    selectOrganization = (organization) => {
+        store.dispatch({type:"SELECT_ORGANIZATION", payload:organization});
+        this.props.closeSelectorLists();
     }
 
     render() {
         return (
             <List>
                 {this.state.data.map ((organization) => (                   
-                    <ListItem key={organization.value} button={true} onClick={() => store.dispatch({type:"SELECT_ORGANIZATION", payload:organization.value})}>
+                    <ListItem key={organization.value} button={true} onClick={() => this.selectOrganization(organization)}>
                         <ListItemText>
                             {organization.name}
                         </ListItemText>
@@ -25,3 +38,11 @@ export default class OrganizationSelectorList extends Component {
         );
     }
 }
+
+const mapStateToProps = (store) => {
+    return {
+        auth: store.auth
+    }
+}
+
+export default connect(mapStateToProps)(OrganizationSelectorList);

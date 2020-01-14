@@ -1,63 +1,136 @@
 import React, { Component } from 'react';
-import { DialogTitle, TextField } from '@material-ui/core';
+import { TextField, Typography, Button, Paper, Tabs, Tab } from '@material-ui/core';
+import fetchErrorChecker from '../ErrorHandler/fetchErrorChecker';
+import getOrganizations from '../OrganizationSelectorList/getOrganizations';
+import getPrograms from '../ProgramSelectorList/getPrograms';
+import { connect } from 'react-redux';
+import ResourceForm from './ResourceForm'
+import SupplementaryApplicationForm from './SupplementaryApplicationForm';
 
-export default class UploadForm extends Component {
 
-    TITLE_CHARACTER_LIMIT = 50;
-    DESCRIPTION_CHARACTER_LIMIT = 150;
+const SUPPLEMENTARY_APPLICATION = "Supplementary Application";
+const INTERVIEW_QUESTION = "Interview Question";
+const INTERVIEW_QUESTION_ANSWER = "Interview Question Answer";
+const SCHOLARSHIP_APPLICATION = "Scholarship Application";
+const RESOURCE = "Resource";
+
+class UploadForm extends Component {
 
     state = {
-        yearChoices: [{value: "2018/2019", label: "2018/2019"}, {value: "2019/2020", label: "2019/2020"}],
-        selectedYear: {value: "2018/2019", label: "2018/2019"},
-        inputTitle:'',
-        inputDescription:'',
+        yearChoices: [{value: "2018", label: "2018/2019"}, {value: "2019", label: "2019/2020"}],
+        selectedYear: {value: "2018", label: "2018/2019"},
+        contentTypeChoices: [SUPPLEMENTARY_APPLICATION, INTERVIEW_QUESTION, INTERVIEW_QUESTION_ANSWER, SCHOLARSHIP_APPLICATION, RESOURCE],
+        selectedContentType: SUPPLEMENTARY_APPLICATION,
+        organizations: [],
+        selectedOrganization: 1,
+        programs: [],
+        selectedProgram: 1,
+        tab: SUPPLEMENTARY_APPLICATION,
     }
 
-    titleValidator = (event) => {
-        if (event.target.value.length <= this.TITLE_CHARACTER_LIMIT) {
-            this.setState({inputTitle: event.target.value});
+    componentDidMount() {
+        getOrganizations ((data) => {
+            this.setState({
+                organizations: data,
+                selectedOrganization: data[0].id
+            })
+        })
+        getPrograms ((data) => {
+            this.setState({
+                programs: data,
+                selectedProgram: data[0].id
+            })
+        })
+        let yearChoices = [];
+        for (let x = 2007; x <= (new Date()).getFullYear()+1; x++) {
+            yearChoices.push({
+                value:x,
+                label:`${x}/${x+1}`
+            })
         }
+        this.setState({
+            yearChoices: yearChoices,
+            selectedYear: {
+                value: (new Date()).getFullYear(),
+                label: `${(new Date()).getFullYear()}/${(new Date()).getFullYear()+1}`
+            }
+        })
     }
 
-    descriptionValidator = (event) => {
-        if (event.target.value.length <= this.DESCRIPTION_CHARACTER_LIMIT) {
-            this.setState({inputDescription: event.target.value});
-        }
+    handleYearChange = (event) => {
+        this.setState ({
+            selectedYear: {
+                value: event.target.value,
+                label: event.target.value + "/" + (parseInt(event.target.value)+1)
+            }
+        });
+    }
+
+    handleContentTypeChange = (event) => {
+        this.setState ({
+            selectedContentType: event.target.value
+        });
+    }
+
+    handleOrganizationChange = (event) => {
+        this.setState ({
+            selectedOrganization: event.target.value
+        })
+    }
+
+    handleProgramChange = (event) => {
+        this.setState ({
+            selectedProgram: event.target.value
+        })
+        console.log (this.state.selectedProgram);
+    }
+
+    handleTabChange = (event, value) => {
+        this.setState({
+            tab: value
+        })
+    }
+
+    isMobile = () => {
+        return window.innerWidth <= 400;
     }
 
     render() {
         return (
-                <div style={{padding:10}}>
-                    <DialogTitle>Upload</DialogTitle>
-                    <form autoComplete="off" style={{display:"flex", flexDirection:"column"}}>
-                        <TextField 
-                            label='Title' 
-                            variant='outlined' 
-                            margin='dense' 
-                            onChange={this.titleValidator}
-                            value={this.state.inputTitle}
-                            helperText={this.TITLE_CHARACTER_LIMIT - this.state.inputTitle.length + ' characters remaining'}
-                            required/>
-                        <TextField label='Link' variant='outlined' margin='dense' required/>
-                        <TextField 
-                            label='Description' 
-                            variant='outlined' 
-                            multiline={true} 
-                            rows={5} 
-                            margin='dense' 
-                            onChange={this.descriptionValidator}
-                            value={this.state.inputDescription}
-                            helperText={this.DESCRIPTION_CHARACTER_LIMIT - this.state.inputDescription.length + ' characters remaining'}
-                        />
-                        <div style={{display:"flex"}}>
-                            <TextField select label='Year' value={this.state.selectedYear.label} 
+                <div style={this.isMobile() ? {}:{display:"flex", flexDirection:"row"}}>
+
+                    <Paper style={{flex:1, display:"flex", justifyContent:"center", alignItems:"center"}} square>
+                        <Tabs 
+                            orientation={this.isMobile() ? 'horizontal':'vertical'} 
+                            variant='scrollable' 
+                            scrollButtons='auto' 
+                            value={this.state.tab} 
+                            indicatorColor='primary' 
+                            textColor='primary'
+                            onChange={this.handleTabChange}
+                            >
+                            <Tab label="Supplementary Application" value={SUPPLEMENTARY_APPLICATION}/>
+                            <Tab label="Interview Question" value={INTERVIEW_QUESTION}/>
+                            <Tab label="Scholarship" value={SCHOLARSHIP_APPLICATION}/>
+                            <Tab label="Resource" value={RESOURCE}/>
+                        </Tabs>
+                    </Paper>
+
+                    {/* <Typography variant='h3' style={{fontSize:20, paddingBottom:20, paddingTop:10, fontSize:25}} align='center'>UPLOAD CONTENT</Typography> */}
+
+                    <form autoComplete="off" style={{display:"flex", flexDirection:"column", marginTop:8, flex:6, padding:20}}>
+
+                        <div style={{display:"flex", justifyContent:"space-between", width:"100%"}}>
+
+                            <TextField select label='School Year' value={this.state.selectedYear.value} 
                             SelectProps={{
                                 native:true
                             }}
+                            onChange={this.handleYearChange}
                             variant='outlined'
-                            helperText='Select school year this content was originally created for'
                             margin='dense'
                             style={{flex:1}}
+                            placeholder={this.state.selectedYear.label}
                             required>
                                 {
                                     this.state.yearChoices.map(year => (
@@ -67,26 +140,73 @@ export default class UploadForm extends Component {
                                     ))
                                 }
                             </TextField>
-                            <TextField select label='IB Level' value={7} 
+                        </div>
+
+                        <div style={{display:"flex", justifyContent:"space-between", width:"100%"}}>
+
+                            <TextField select label='University' value={this.state.selectedOrganization} 
                             SelectProps={{
                                 native:true
                             }}
+                            onChange={this.handleOrganizationChange}
                             variant='outlined'
-                            helperText='Select IB level grade for this summative'
+                            margin='dense'
+                            style={{flex:1}}
+                            required>
+                                {
+                                    this.state.organizations.map(organization => (
+                                        <option key={organization.id} value={organization.id}>
+                                            {organization.name}
+                                        </option>
+                                    ))
+                                }
+                            </TextField>
+
+                            <TextField select label='Program' value={this.state.selectedProgram} 
+                            SelectProps={{
+                                native:true
+                            }}
+                            onChange={this.handleProgramChange}
+                            variant='outlined'
                             margin='dense'
                             style={{flex:1, marginLeft:10}}
                             required>
                                 {
-                                    [1,2,3,4,5,6,7].map(grade => (
-                                        <option key={grade} value={grade}>
-                                            {grade}
+                                    this.state.programs.map(program => (
+                                        <option key={program.id} value={program.id}>
+                                            {program.name}
                                         </option>
                                     ))
                                 }
                             </TextField>
                         </div>
+
+                        {this.state.tab === SUPPLEMENTARY_APPLICATION ? 
+                            <SupplementaryApplicationForm 
+                                year={this.state.selectedYear.value} 
+                                auth={this.props.auth} 
+                                closeDialogCallback={this.props.closeDialogCallback}
+                                organizationId={this.state.selectedOrganization}
+                                programId={this.state.selectedProgram}
+                            />:null}
+                        {this.state.tab === RESOURCE ? 
+                            <ResourceForm 
+                                year={this.state.selectedYear.value} 
+                                auth={this.props.auth} 
+                                closeDialogCallback={this.props.closeDialogCallback}
+                                organizationId={this.state.selectedOrganization}
+                                programId={this.state.selectedProgram}
+                            />:null}
                     </form>
                 </div>
         );
     }
 }
+
+const mapStateToProps = (store) => {
+    return {
+        auth: store.auth,
+    }
+}
+
+export default connect(mapStateToProps)(UploadForm)

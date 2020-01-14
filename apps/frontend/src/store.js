@@ -4,15 +4,26 @@ import thunk from 'redux-thunk';
 import rootReducer from './reducers/rootReducer';
 
 const initialState = {
+    auth: {
+        token: localStorage.getItem('token'),
+        isAuthenticated: null,
+        isLoading: false,
+        user:null,
+    },
     navigationDrawer: {
         open:false,
     },
     home: {
         tab: "SUMMATIVES",
+        expandedCard:null,
     },
     organization: null,
     subject: null,
     page: "HOME",
+    error: {
+        message: null,
+        read: false,
+    },
 };
 
 const middleware = [thunk];

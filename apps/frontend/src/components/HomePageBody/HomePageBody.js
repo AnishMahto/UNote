@@ -1,73 +1,41 @@
 import React, { Component } from 'react';
-import { Typography, Fab, IconButton, Drawer, Button, Icon } from '@material-ui/core';
-import SummativeCard from '../ContentCards/SummativeCard';
-import { ViewList, ViewModule, Sort, LocationCity, LocalLibrary } from '@material-ui/icons';
+import { Typography, Fab, IconButton, Drawer, Button, Icon, Tooltip, Paper, Card, CardContent, Slide, GridList, GridListTile, GridListTileBar, ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, ExpansionPanelActions, Grid, Grow, Fade, CircularProgress } from '@material-ui/core';
+import { ViewList, ViewModule, Sort, LocationCity, LocalLibrary, ExpandMore, KeyboardArrowDownOutlined, KeyboardArrowUpOutlined, Timer } from '@material-ui/icons';
 import { connect } from 'react-redux';
 import OrganizationSelectorList from '../OrganizationSelectorList/OrganizationSelectorList';
-import SubjectSelectorList from '../SubjectSelectorList/SubjectSelectorList';
+import SubjectSelectorList from '../ProgramSelectorList/ProgramSelectorList';
+import { gradientTheme } from '../../themes';
 // import Roboto from 'typeface-roboto';
+import SupplementaryApplicationsTab from '../HomePageTabs/SupplementaryApplicationsTab';
+import ScholarshipsTab from '../HomePageTabs/ScholarshipsTab';
+import ResourcesTab from '../HomePageTabs/ResourcesTab';
+import InterviewTab from '../HomePageTabs/InterviewTab';
+import HomePageToolBar from './HomePageToolBar';
 
 class HomePageBody extends Component {
 
     state = {
-        data: [],
-        showOrganizationList:false,
-        showSubjectList:false,
+        data: []
     }
 
     render() {
-        if (this.state.data.length == 0 && this.props.tab!="SUMMATIVES") {
+        if (this.state.data.length == 0 && this.props.tab!="SUMMATIVES" && this.props.tab!="RESOURCES" && this.props.tab!="INTERVIEW" && this.props.tab!="SCHOLARSHIPS") {
             return (
-                <div style={{marginTop:"30%"}}>
+                <div style={{marginTop:100}}>
                     <Typography variant='overline' display='block' style={{color:"#747d8c", textAlign:"center"}} gutterBottom>No entries found for <strong>{this.props.type}</strong>. Be the first to add one!</Typography>
                 </div>
             );
+        } else if (this.props.tab == "RESOURCES") {
+            return <ResourcesTab/>
+        } else if (this.props.tab == "INTERVIEW") {
+            return <InterviewTab/>
+        } else if (this.props.tab == "SCHOLARSHIPS") {
+            return <ScholarshipsTab/>
         } else {
             return (
                 <div>
-                    <div style={{display:"flex", flexDirection:"row", justifyContent:"space-between"}}>
-                        <div style={{display:"flex", flexDirection:"row", justifyContent:"flex-start", flex:1}}>
-                            <IconButton onClick={() => this.setState({showOrganizationList: !this.state.showOrganizationList})}>
-                                <LocationCity/>
-                            </IconButton>
-                            <IconButton onClick={() => this.setState({showSubjectList: !this.state.showSubjectList})}>
-                                <LocalLibrary/>
-                            </IconButton>
-                            <Drawer open={this.state.showOrganizationList} anchor='bottom' onClose={()=>this.setState({showOrganizationList: false})}>
-                                <OrganizationSelectorList/>
-                            </Drawer>
-                            <Drawer open={this.state.showSubjectList} anchor='bottom' onClose={()=>this.setState({showSubjectList:false})}>
-                                <SubjectSelectorList/>
-                            </Drawer>
-                        </div>
-                        <div style={{display:"flex", flexDirection:"row", justifyContent:"flex-end", flex:1}}>
-                            <IconButton>
-                                <Sort/>
-                            </IconButton>
-                            <IconButton>
-                                <ViewList/>
-                            </IconButton>
-                            <IconButton>
-                                <ViewModule/>
-                            </IconButton>
-                        </div>
-                    </div>
-                    <div style={{display:"flex", flexDirection:"row", flexWrap:"wrap", justifyContent:"center"}}>
-                        <SummativeCard />
-                        <SummativeCard />
-                        <SummativeCard />
-                        <SummativeCard />
-                        <SummativeCard />
-                        <SummativeCard />
-                        <SummativeCard />
-                        <SummativeCard />
-                        <SummativeCard />
-                        <SummativeCard />
-                        <SummativeCard />
-                        <SummativeCard />
-                        <SummativeCard />
-                        <SummativeCard />
-                    </div>
+                    <HomePageToolBar/>    
+                    <SupplementaryApplicationsTab/>
                 </div>
             );
         }

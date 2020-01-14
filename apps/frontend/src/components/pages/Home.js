@@ -7,6 +7,7 @@ import store from '../../store';
 import HomePageBody from '../HomePageBody/HomePageBody';
 import { Add } from '@material-ui/icons';
 import UploadForm from '../UploadForm/UploadForm';
+import { gradientTheme } from '../../themes';
 
 class Home extends Component {
 
@@ -23,21 +24,19 @@ class Home extends Component {
             <div style={{backgroundColor:"#f1f2f6", width:"100%", minHeight:"100%", position:"absolute", paddingBottom:20, top:0, left:0}}>
             <Header />
             <Paper square>
-                <Tabs value={this.props.tab} variant='fullWidth' onChange={this.handleTabChange} indicatorColor='primary' textColor='primary'>
-                    <Tab label="SUMMATIVES" value="SUMMATIVES"/>
-                    <Tab label="NOTES" value="NOTES"/>
+                <Tabs value={this.props.tab} variant='fullWidth' onChange={this.handleTabChange} indicatorColor='primary' textColor='primary' variant="scrollable" scrollButtons="auto">
+                    <Tab label="SUPPLEMENTARY APPLICATIONS" value="SUMMATIVES"/>
                     <Tab label="RESOURCES" value="RESOURCES"/>
                 </Tabs>
             </Paper>
             <HomePageBody type={this.props.tab} />
-            <Fab style={{position:"fixed", bottom:10, right:10}} color='primary' onClick={() => this.setState({displayUploadDialog: !this.state.displayUploadDialog})}>
-                <Add fontSize='large' />
+            <Fab style={{position:"fixed", bottom:10, right:10, background:gradientTheme}} color='primary' onClick={() => this.setState({displayUploadDialog: !this.state.displayUploadDialog})}>
+                <Add fontSize='large' style={{color:"white"}}/>
             </Fab>
             <Dialog fullWidth={true} open={this.state.displayUploadDialog} onClose={() => this.setState({displayUploadDialog: false})}>
-                <UploadForm/>
+                <UploadForm closeDialogCallback={() => this.setState({displayUploadDialog:false})} />
             </Dialog>
             <NavigationDrawer />
-            {/* <h1>lol</h1> */}
             </div>
         );
     }

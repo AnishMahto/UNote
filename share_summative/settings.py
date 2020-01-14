@@ -38,9 +38,23 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.summative',
+    'apps.supplementary_applications',
+    'apps.accounts',
+    'apps.universities',
+    'apps.programs',
+    'apps.resource_type',
     'rest_framework',
     'apps.frontend',
+    'apps.resource_item',
+    'knox',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES':
+    ('knox.auth.TokenAuthentication',)
+}
+
+AUTH_PROFILE_MODULE = 'accounts.UserProfile'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -121,3 +135,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "apps", "media")
