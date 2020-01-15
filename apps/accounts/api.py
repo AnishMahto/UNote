@@ -59,13 +59,13 @@ class Get_Global_Rank_ViewSet (viewsets.GenericViewSet):
 
     def list (self, request, *args, **kwargs):
         queryset = UserProfile.objects.order_by('net_upvotes')
-        rank = queryset.count()
+        rank = 0
         for profile in queryset:
+            rank += 1
             if profile.username == self.request.user.username:
                 return Response({
                     "data": rank
                 })
-            rank -= 1
         raise APIException ("User Not Found")
         
 class Get_Total_Contributions_ViewSet (viewsets.GenericViewSet):

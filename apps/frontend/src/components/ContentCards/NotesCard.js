@@ -17,8 +17,6 @@ export const tagColors = {
     "PROF_NOTES":"#7f8fa6"
 }
 
-// export class SupplementaryApplicationCardBody extends Component {}
-
 class NotesCard extends Component {
 
     state = {
@@ -41,11 +39,6 @@ class NotesCard extends Component {
             method:'PATCH'
         })
         .then (response => fetchErrorChecker(response))
-        .then (responseData => {
-            // this.setState({
-            //     data: responseData.data
-            // })
-        })
         .catch(err => {
             console.log(err);
         })

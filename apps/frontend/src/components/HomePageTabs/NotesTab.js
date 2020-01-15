@@ -140,14 +140,17 @@ class SupplementaryApplicationsTab extends Component {
                                                 </div>
 
                                                 <div style={{paddingLeft:30, paddingRight:30, marginTop:10}}>
-                                                    <Typography variant='caption' color='textSecondary' style={{marginTop:10}}>
+                                                    {/* <Typography variant='caption' component='summary' color='textSecondary' style={{marginTop:10, overflowX:'clip'}}>
                                                         {this.props.expandedCard.url}
-                                                    </Typography>
-                                                    <div style={{display:"flex", flexDirection:"row", justifyContent:'space-between' }}>
+                                                    </Typography> */}
+                                                    <div style={{marginTop:10, marginBottom:5, fontSize:11.5, fontFamily:"arial", color:"grey", overflowX:"auto", maxWidth:window.innerWidth * 0.5}}>
+                                                        {this.props.expandedCard.url}
+                                                    </div>
+                                                    {/* <div style={{display:"flex", flexDirection:"row", justifyContent:'space-between' }}> */}
                                                         <Typography variant='caption' color='textSecondary'>
                                                             {this.props.expandedCard.year+"/"+(parseInt(this.props.expandedCard.year)+1)}
                                                         </Typography>
-                                                    </div>
+                                                    {/* </div> */}
                                                     <Typography variant='body1' component='summary' style={{height:300, overflowY:"auto", marginTop:10}}>
                                                         {this.props.expandedCard.description}
                                                     </Typography>

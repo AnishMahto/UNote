@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 export default class LoginPageHeader extends Component {
     render() {
         return (
-            <AppBar position="static" style={{background:gradientTheme}}>
+            <AppBar elevation={0} position="static" style={{background:gradientTheme}}>
                 <Toolbar variant="dense" style={{display:"flex", flexDirection:"row", justifyContent:"space-between"}}>
                     <div>
                         <Typography variant="button" style={{fontWeight:"bold"}}>UNote</Typography>
