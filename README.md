@@ -17,7 +17,7 @@ Instructions using virtualenv:
 - Frontend code exists under apps.frontend
 - Backend code exists under the other apps folders (each folder holds a Django app)
 
-## App Images
+## App Screenshots
 
 ![](UNote_Demo_Media/UNote7.png)
 ![](UNote_Demo_Media/UNote1.png)
