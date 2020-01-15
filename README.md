@@ -16,3 +16,13 @@ Instructions using virtualenv:
 **Project Structure Notes**: 
 - Frontend code exists under apps.frontend
 - Backend code exists under the other apps folders (each folder holds a Django app)
+
+## App Images
+
+![](UNote_Demo_Media/UNote1.png)
+![](UNote_Demo_Media/UNote2.png)
+![](UNote_Demo_Media/UNote3.png)
+![](UNote_Demo_Media/UNote4.png)
+![](UNote_Demo_Media/UNote5.png)
+![](UNote_Demo_Media/UNote6.png)
+![](UNote_Demo_Media/UNote7.png)
