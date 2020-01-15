@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import store from '../../store';
-import SupplementaryApplicationCard from '../ContentCards/SupplementaryApplicationCard';
+import SupplementaryApplicationCard from '../ContentCards/NotesCard';
 import { Typography, Card, CardContent, Slide, CircularProgress, IconButton, Tooltip, Chip } from '@material-ui/core';
 import { Close } from '@material-ui/icons';
 import fetchErrorChecker from '../ErrorHandler/fetchErrorChecker';
 import ErrorHandler from '../ErrorHandler/ErrorHandler';
-import { tags } from '../ContentCards/SupplementaryApplicationCard';
+import { tagColors } from '../ContentCards/NotesCard';
 
 class CardGrid extends Component {
 
@@ -156,7 +156,7 @@ class SupplementaryApplicationsTab extends Component {
                                                     </Typography>
                                                     <div style={{paddingTop:7, paddingBottom:7}}>
                                                         {(this.props.expandedCard.tag.length > 0) ? 
-                                                            (<Chip label={this.props.expandedCard.tag} size='small' style={styles.chip, {backgroundColor:tags[this.props.expandedCard.tag], color:"white" }} />):
+                                                            (<Chip label={this.props.expandedCard.tag.split('_').join(' ')} size='small' style={styles.chip, {backgroundColor:tagColors[this.props.expandedCard.tag], color:"white" }} />):
                                                             (<div style={{paddingTop:4, paddingBottom:4, fontStyle:"italic"}}>
                                                                 <Typography variant='caption'>No Tags Provided</Typography>
                                                             </div>)}

@@ -6,7 +6,7 @@ import OrganizationSelectorList from '../OrganizationSelectorList/OrganizationSe
 import SubjectSelectorList from '../ProgramSelectorList/ProgramSelectorList';
 import { gradientTheme } from '../../themes';
 // import Roboto from 'typeface-roboto';
-import SupplementaryApplicationsTab from '../HomePageTabs/SupplementaryApplicationsTab';
+import SupplementaryApplicationsTab from '../HomePageTabs/NotesTab';
 import ScholarshipsTab from '../HomePageTabs/ScholarshipsTab';
 import ResourcesTab from '../HomePageTabs/ResourcesTab';
 import InterviewTab from '../HomePageTabs/InterviewTab';

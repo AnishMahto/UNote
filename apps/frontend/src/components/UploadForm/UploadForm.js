@@ -5,7 +5,7 @@ import getOrganizations from '../OrganizationSelectorList/getOrganizations';
 import getPrograms from '../ProgramSelectorList/getPrograms';
 import { connect } from 'react-redux';
 import ResourceForm from './ResourceForm'
-import SupplementaryApplicationForm from './SupplementaryApplicationForm';
+import NotesForm from './NotesForm';
 
 
 const SUPPLEMENTARY_APPLICATION = "Supplementary Application";
@@ -109,9 +109,7 @@ class UploadForm extends Component {
                             textColor='primary'
                             onChange={this.handleTabChange}
                             >
-                            <Tab label="Supplementary Application" value={SUPPLEMENTARY_APPLICATION}/>
-                            <Tab label="Interview Question" value={INTERVIEW_QUESTION}/>
-                            <Tab label="Scholarship" value={SCHOLARSHIP_APPLICATION}/>
+                            <Tab label="Notes" value={SUPPLEMENTARY_APPLICATION}/>
                             <Tab label="Resource" value={RESOURCE}/>
                         </Tabs>
                     </Paper>
@@ -182,7 +180,7 @@ class UploadForm extends Component {
                         </div>
 
                         {this.state.tab === SUPPLEMENTARY_APPLICATION ? 
-                            <SupplementaryApplicationForm 
+                            <NotesForm 
                                 year={this.state.selectedYear.value} 
                                 auth={this.props.auth} 
                                 closeDialogCallback={this.props.closeDialogCallback}

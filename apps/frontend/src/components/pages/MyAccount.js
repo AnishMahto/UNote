@@ -118,7 +118,7 @@ class MyAccount extends Component {
     }
 
     componentDidMount() {
-        this.loadData('/api/my_supplementary_applications/', 'mySupplementaryApplicationData');
+        this.loadData('/api/my_notes/', 'mySupplementaryApplicationData');
         this.loadData('/api/my_resource_items/', 'myResourceItemData');
         this.loadData('/api/my_global_rank', 'globalRank');
         this.loadData('/api/my_total_contributions', 'totalContributions');
@@ -200,64 +200,6 @@ class MyAccount extends Component {
                             })
                         }
                     </div>
-                    {/* <div style={{maxHeight:500, overflowY:"auto", flex:1, marginRight:10, padding:10, minWidth:250}}>
-                        <Paper style={{marginBottom:10, background: gradientTheme2}}>
-                            <List>
-                                <ListItem>
-                                    <ListItemText style={{color:"white"}}>MY INTERVIEW QUESTIONS</ListItemText>
-                                </ListItem>
-                            </List>
-                        </Paper>
-                        {
-                            [0,0,0,0,0,0].map(()=> {
-                                return (
-                                    <Paper style={{marginBottom:10}}>
-                                        <List dense={true}>
-                                            <ListItem>
-                                                <ListItemText>
-                                                    Random Contribution
-                                                </ListItemText>
-                                                <ListItemSecondaryAction>
-                                                    <IconButton>
-                                                        <Delete/>
-                                                    </IconButton>
-                                                </ListItemSecondaryAction>
-                                            </ListItem>
-                                        </List>
-                                    </Paper>
-                                );
-                            })
-                        }
-                    </div> */}
-                    {/* <div style={{maxHeight:500, overflowY:"auto", flex:1, padding:10, minWidth:250}}>
-                        <Paper style={{marginBottom:10, background: gradientTheme2}}>
-                            <List>
-                                <ListItem>
-                                    <ListItemText style={{color:"white"}}>MY SCHOLARSHIP APPLICATIONS</ListItemText>
-                                </ListItem>
-                            </List>
-                        </Paper>
-                        {
-                            [0,0,0,0,0].map(()=> {
-                                return (
-                                    <Paper style={{marginBottom:10}}>
-                                        <List dense={true}>
-                                            <ListItem>
-                                                <ListItemText>
-                                                    Random Contribution
-                                                </ListItemText>
-                                                <ListItemSecondaryAction>
-                                                    <IconButton>
-                                                        <Delete/>
-                                                    </IconButton>
-                                                </ListItemSecondaryAction>
-                                            </ListItem>
-                                        </List>
-                                    </Paper>
-                                );
-                            })
-                        }
-                    </div> */}
                     <div style={{maxHeight:500, overflowY:"auto", flex:1, padding:10, minWidth:250}}>
                         <Paper style={{marginBottom:10, background: gradientTheme2}}>
                             <List>

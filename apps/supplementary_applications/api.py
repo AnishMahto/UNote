@@ -164,30 +164,31 @@ class Supplementary_Applications_ViewSet (viewsets.GenericViewSet, mixins.Create
 
 class Get_Tags_ViewSet (viewsets.GenericViewSet):
     def list (self, response, *args, **kwargs):
-        BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-        URL = "https://www.medium.com/lol/adfsdf/"
-        URL_SPLIT = urlsplit (URL)
+        # BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+        # URL = "https://www.medium.com/lol/adfsdf/"
+        # URL_SPLIT = urlsplit (URL)
 
-        try:
-            os.mkdir(os.path.join(BASE_DIR, 'media', 'images', URL_SPLIT.netloc))
-        except:
-            print ("folder exists")
+        # try:
+        #     os.mkdir(os.path.join(BASE_DIR, 'media', 'images', URL_SPLIT.netloc))
+        # except:
+        #     print ("folder exists")
 
-        # print (BASE_DIR)
-        icons = favicon.get('https://www.medium.com')
-        icon = icons[0]
+        # # print (BASE_DIR)
+        # icons = favicon.get('https://www.medium.com')
+        # icon = icons[0]
         
 
-        response = requests.get(icon.url, stream=True)
+        # response = requests.get(icon.url, stream=True)
 
-        # p = ImageFile.Parser()
+        # # p = ImageFile.Parser()
 
-        with open(os.path.join (BASE_DIR, 'media', 'images', URL_SPLIT.netloc, 'python-favicon.{}'.format(icon.format)), 'wb') as image:
-            for chunk in response.iter_content(1024):
-                image.write(chunk)
-                # p.feed(chunk)
+        # with open(os.path.join (BASE_DIR, 'media', 'images', URL_SPLIT.netloc, 'python-favicon.{}'.format(icon.format)), 'wb') as image:
+        #     for chunk in response.iter_content(1024):
+        #         image.write(chunk)
+        #         # p.feed(chunk)
 
-        image.close()
+        # image.close()
+        print (GET_TAGS_DATA)
 
         return Response({
             "data": GET_TAGS_DATA

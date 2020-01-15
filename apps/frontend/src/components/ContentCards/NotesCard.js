@@ -12,15 +12,14 @@ const styles = {
     }
 }
 
-export const tags = {
-    "ACCEPTED":"#78e08f",
-    "REJECTED":"#ff6b6b",
-    "WAITLISTED":"#7f8fa6"
+export const tagColors = {
+    "USER_NOTES":"#78e08f",
+    "PROF_NOTES":"#7f8fa6"
 }
 
 // export class SupplementaryApplicationCardBody extends Component {}
 
-class SupplementaryApplicationCard extends Component {
+class NotesCard extends Component {
 
     state = {
         data: this.props.data,
@@ -75,7 +74,7 @@ class SupplementaryApplicationCard extends Component {
                      
                     <div style={{paddingTop:7, paddingBottom:7}}>
                         {(this.props.data.tag.length > 0) ? 
-                            (<Chip label={this.props.data.tag} size='small' style={styles.chip, {backgroundColor:tags[this.props.data.tag], color:"white" }} />):
+                            (<Chip label={this.props.data.tag.split('_').join(' ')} size='small' style={styles.chip, {backgroundColor:tagColors[this.props.data.tag], color:"white" }} />):
                             (<div style={{paddingTop:3, paddingBottom:3, fontStyle:"italic"}}>
                                 <Typography variant='caption'>No Tags Provided</Typography>
                             </div>)}
@@ -93,4 +92,4 @@ const mapStateToProps = (store) => {
     }
 }
 
-export default connect(mapStateToProps)(SupplementaryApplicationCard)
+export default connect(mapStateToProps)(NotesCard)

@@ -3,7 +3,7 @@ import { TextField, Button } from '@material-ui/core';
 import fetchErrorChecker from '../ErrorHandler/fetchErrorChecker';
 import getTags from './getTags';
 
-export default class SupplementaryApplicationForm extends Component {
+export default class NotesForm extends Component {
 
     TITLE_CHARACTER_LIMIT = 50;
     DESCRIPTION_CHARACTER_LIMIT = 150;
@@ -48,7 +48,7 @@ export default class SupplementaryApplicationForm extends Component {
         })
     }
 
-    uploadSupplementaryApplication = () => {
+    uploadNotes = () => {
         let data = {
             title: this.state.inputTitle,
             description: this.state.inputDescription,
@@ -123,7 +123,7 @@ export default class SupplementaryApplicationForm extends Component {
                     helperText={this.DESCRIPTION_CHARACTER_LIMIT - this.state.inputDescription.length + ' characters remaining'}
                 />
 
-                <Button variant='contained' color='primary' style={{marginTop:10}} onClick={this.uploadSupplementaryApplication}>Submit</Button>
+                <Button variant='contained' color='primary' style={{marginTop:10}} onClick={this.uploadNotes}>Submit</Button>
             </div>
         );
     }
