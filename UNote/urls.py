@@ -21,7 +21,6 @@ from django.conf import settings
 
 urlpatterns = [
     path('', include('apps.frontend.urls')),
-    path('', include('apps.summative.urls')),
     path('', include('apps.supplementary_applications.urls')),
     path('', include('apps.accounts.urls')),
     path('', include('apps.universities.urls')),

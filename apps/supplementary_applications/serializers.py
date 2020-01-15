@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from apps.supplementary_applications.models import SupplementaryApplication
+# from apps.supplementary_applications.models import SupplementaryApplication
+from .models import SupplementaryApplication
 
 class Supplementary_Application_Serializer(serializers.ModelSerializer):
     class Meta:
