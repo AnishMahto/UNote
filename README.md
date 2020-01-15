@@ -19,10 +19,10 @@ Instructions using virtualenv:
 
 ## App Images
 
+![](UNote_Demo_Media/UNote7.png)
 ![](UNote_Demo_Media/UNote1.png)
 ![](UNote_Demo_Media/UNote2.png)
 ![](UNote_Demo_Media/UNote3.png)
 ![](UNote_Demo_Media/UNote4.png)
 ![](UNote_Demo_Media/UNote5.png)
 ![](UNote_Demo_Media/UNote6.png)
-![](UNote_Demo_Media/UNote7.png)
