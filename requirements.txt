@@ -16,7 +16,7 @@ distro==1.3.0
 distro-info===0.21ubuntu2
 Django==3.0.2
 django-rest-knox==4.1.0
-djangorestframework==3.10.2
+djangorestframework==3.11.2
 entrypoints==0.3
 evdev==1.1.2
 favicon==0.7.0
